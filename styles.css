@@ -1,0 +1,24 @@
+* {
+  background: black;
+  font-family: monospace;
+  text-align: center;
+  color: rgb(182, 181, 181);
+}
+
+h1 {
+  font-size: 32pt;
+}
+
+span {
+  color: rgb(18, 207, 18);
+  text-decoration-line: underline;
+  text-decoration-thickness: 4pt;
+}
+
+p {
+  font-size: 24pt;
+}
+
+#emoji {
+  padding-top: 42vh;
+}
