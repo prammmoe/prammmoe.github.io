@@ -9,10 +9,15 @@ h1 {
   font-size: 32pt;
 }
 
-span {
+#json {
   color: rgb(18, 207, 18);
   text-decoration-line: underline;
   text-decoration-thickness: 4pt;
+}
+
+#warning {
+    color: rgb(243, 207, 0);
+    text-decoration-line: underline;
 }
 
 p {
@@ -20,5 +25,5 @@ p {
 }
 
 #emoji {
-  padding-top: 42vh;
+  padding-top: 38vh;
 }
