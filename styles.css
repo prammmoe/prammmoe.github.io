@@ -6,7 +6,8 @@
 }
 
 h1 {
-  font-size: 32pt;
+  margin-top: 12vmax;
+  font-size: 2.6vmax;
 }
 
 #json {
@@ -21,9 +22,9 @@ h1 {
 }
 
 p {
-  font-size: 24pt;
+  font-size: 1.4vmax;
 }
 
 #emoji {
-  padding-top: 38vh;
+  padding-top: 20vmax;
 }
