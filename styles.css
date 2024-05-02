@@ -1,19 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
 * {
-  background: black;
-  font-family: monospace;
+  background: rgb(44, 44, 48);
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
   text-align: center;
   color: rgb(182, 181, 181);
 }
 
 h1 {
-  margin-top: 12vmax;
+  margin-top: 2vmax;
   font-size: 2.6vmax;
+  color: rgb(216, 216, 216);
+}
+
+.section {
+  padding-top: 2vmax;
+  padding-bottom: 0.8vmax;
+  font-size: 2vmax;
+  color: rgb(216, 216, 216);
 }
 
 #json {
   color: rgb(18, 207, 18);
   text-decoration-line: underline;
-  text-decoration-thickness: 4pt;
 }
 
 #warning {
