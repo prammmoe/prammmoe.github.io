@@ -14,7 +14,8 @@ window.onload = function () {
     var date = new Date();
     var hours = date.getHours();
     var minutes = date.getMinutes();
-    var current = hours + minutes * 0.01;
+    var current = hours + minutes / 60; 
+
     if (current >= 5 && current < 18) return "Have a nice day";
     if (current >= 18 && current < 20) return "Have a nice evening";
     if (current >= 20 || current < 5) return "Have a good night";
@@ -24,11 +25,12 @@ window.onload = function () {
     var date = new Date();
     var hours = date.getHours();
     var minutes = date.getMinutes();
-    var current = hours + minutes * 0.011;
+    var current = hours + minutes / 60; 
+
     if (current >= 5 && current < 12) return "Good morning";
     if (current >= 12 && current < 17) return "Good afternoon";
     if (current >= 17 && current < 21) return "Good evening";
-    if (current >= 21 && current < 5) return "Good night";
+    if (current >= 21 || current < 5) return "Good night";
   };
 
   var messages = [
