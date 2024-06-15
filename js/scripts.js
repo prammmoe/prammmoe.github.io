@@ -35,7 +35,7 @@ window.onload = function () {
 
   var messages = [
     // 'Hello! 👋',
-    getCurrentSit(),
+    "Hello!",
     "I'm Pram",
     "I am a third year CS student",
     "I love all things about backend development and AI",
