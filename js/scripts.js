@@ -1,44 +1,31 @@
-/*
- * This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
- * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/.
- * Copyright (c) 2016 Julian Garnier
- */
-
 window.onload = function () {
   var messagesEl = document.querySelector(".messages");
   var typingSpeed = 20;
   var loadingText = "<b>•</b><b>•</b><b>•</b>";
   var messageIndex = 0;
 
-  var getCurrentTime = function () {
-    var date = new Date();
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    var current = hours + minutes / 60; 
+  var date = new Date();
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var current = hours + minutes / 60;
 
+  var getCurrentTime = () => {
     if (current >= 5 && current < 18) return "Have a nice day";
-    if (current >= 18 && current < 20) return "Have a nice evening";
-    if (current >= 20 || current < 5) return "Have a good night";
+    if (current >= 18 && current < 22) return "Have a nice evening";
   };
 
-  var getCurrentSit = function () {
-    var date = new Date();
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    var current = hours + minutes / 60; 
-
-    if (current >= 5 && current < 12) return "Good morning";
-    if (current >= 12 && current < 17) return "Good afternoon";
-    if (current >= 17 && current < 21) return "Good evening";
-    if (current >= 21 || current < 5) return "Good night";
-  };
+  var midnightMessages = [
+    "It's already late night now ...",
+    "Better get some sleep, folks.",
+    "Come back again  tomorrow!",
+  ];
 
   var messages = [
-    // 'Hello! 👋',
     "Hello!",
     "I'm Pram",
     "I am a third year CS student",
-    "I love all things about backend development and AI",
+    "I love all things about backend development and computer vision",
+    "Currently learning how code and compilers work in lower layer",
     'If you have something to discuss, <br>you can contact me at <a href="mailto:ikhwanpramuditha05@gmail.com">ikhwanpramuditha05@gmail.com</a>',
     '<a target="_blank" href="https://www.linkedin.com/in/ikhwanpramuditha/">linkedin.com/in/ikhwanpramuditha</a><br><a target="_blank" href="https://x.com/prammmoee">x.com/prammmoee</a><br><a target="_blank" href="https://github.com/prammmoe">github.com/prammmoe</a><br><a target="_blank" href="https://dribbble.com/prammmoe">dribbble.com/prammmoe</a><br><a target="_blank" href="https://medium.com/@prammmoe">medium.com/@prammmoe</a><br><a target="_blank" href="https://monkeytype.com/profile/prammmoe">monkeytype.com/profile/prammmoe</a>',
     getCurrentTime(),
@@ -185,15 +172,27 @@ window.onload = function () {
   };
 
   var sendMessages = function () {
-    var message = messages[messageIndex];
-    if (!message) return;
-    sendMessage(message);
-    ++messageIndex;
-    setTimeout(
-      sendMessages,
-      message.replace(/<(?:.|\n)*?>/gm, "").length * typingSpeed +
-        anime.random(700, 1000)
-    );
+    if (current >= 22 && current <= 5) {
+      var message = midnightMessages[messageIndex];
+      if (!message) return;
+      sendMessage(message);
+      ++messageIndex;
+      setTimeout(
+        sendMessages,
+        message.replace(/<(?:.|\n)*?>/gm, "").length * typingSpeed +
+          anime.random(700, 1000)
+      );
+    } else {
+      var message = messages[messageIndex];
+      if (!message) return;
+      sendMessage(message);
+      ++messageIndex;
+      setTimeout(
+        sendMessages,
+        message.replace(/<(?:.|\n)*?>/gm, "").length * typingSpeed +
+          anime.random(700, 1000)
+      );
+    }
   };
 
   sendMessages();
@@ -205,4 +204,31 @@ window.onload = function () {
     sendMessages();
     localStorage.setItem("messagesShown", true);
   }
+
+  // Theme toggle functionality
+  var themeToggleButton = document.getElementById("theme-toggle-button");
+  // Set initial theme based on local storage
+  if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light-mode");
+    themeToggleButton.classList.add("moon");
+  } else {
+    document.body.classList.add("dark-mode");
+    themeToggleButton.classList.add("sun");
+  }
+
+  themeToggleButton.addEventListener("click", function () {
+    if (document.body.classList.contains("dark-mode")) {
+      document.body.classList.remove("dark-mode");
+      document.body.classList.add("light-mode");
+      themeToggleButton.classList.remove("sun");
+      themeToggleButton.classList.add("moon");
+      localStorage.setItem("theme", "light");
+    } else {
+      document.body.classList.remove("light-mode");
+      document.body.classList.add("dark-mode");
+      themeToggleButton.classList.remove("moon");
+      themeToggleButton.classList.add("sun");
+      localStorage.setItem("theme", "dark");
+    }
+  });
 };
