@@ -1,21 +1,25 @@
 :root {
   font-size: 1.125rem;
 }
+
 @media (min-width: 600px) {
   :root {
     font-size: 1.5rem;
   }
 }
+
 @media (min-width: 900px) {
   :root {
     font-size: 1.75rem;
   }
 }
+
 @media (min-width: 1200px) {
   :root {
     font-size: 2rem;
   }
 }
+
 *,
 *:before,
 *:after {
@@ -23,6 +27,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   display: flex;
   flex-direction: column;
@@ -30,15 +35,16 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* background: rgb(0, 0, 0); ini warna untuk dark mode*/
   background: rgba(18, 18, 18, 255);
 }
+
 .messages {
   overflow: auto;
   width: 100vw;
   max-height: 100vh;
   padding: 1rem 0.9rem;
 }
+
 .bubble {
   overflow: hidden;
   display: inline-block;
@@ -50,13 +56,15 @@ body {
   vertical-align: middle;
   transition: border-radius 0.25s ease-out 0.075s;
 }
+
 .bubble.left.cornered {
   border-bottom-left-radius: 0;
 }
+
 .bubble.left {
   background: #262628;
-  /* background: rgba(206, 206, 206, 0.50); */
 }
+
 .bubble:after {
   content: "";
   position: absolute;
@@ -70,27 +78,93 @@ body {
   background-repeat: no-repeat;
   transition: background-position 0.15s ease-in;
 }
+
 .bubble.cornered:after {
   background-position: 0 0;
 }
+
 .bubble span {
   display: block;
 }
+
 .bubble span.message {
   opacity: 0;
   color: #ffffff;
 }
+
 .bubble a {
   color: #1b80ea;
 }
+
 .bubble .loading {
   position: absolute;
   width: 2.25rem;
   font-size: 2rem;
   line-height: 1rem;
 }
+
 .bubble .loading b {
   display: inline-block;
   color: #888889;
-  /* color: rgba(0, 0, 0, 0.5); */
+}
+
+/* Toggle Button */
+#theme-toggle-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  #theme-toggle-button {
+    width: 30px;
+    height: 30px;
+    top: 14px;
+    right: 14px;
+  }
+}
+
+body.light-mode {
+  background: #ffffff;
+}
+
+body.light-mode .bubble.left {
+  background: #e0e0e0;
+}
+
+body.light-mode .bubble span.message {
+  color: #000000;
+}
+
+body.dark-mode {
+  background: rgba(18, 18, 18, 255);
+}
+
+body.dark-mode .bubble.left {
+  background: #262628;
+}
+
+body.dark-mode .bubble span.message {
+  color: #ffffff;
+}
+
+#theme-toggle-button.sun {
+  background-image: url("../images/light.svg"); /* Provide path to your sun icon */
+}
+
+#theme-toggle-button.moon {
+  background-image: url("../images/dark.svg"); /* Provide path to your moon icon */
 }
